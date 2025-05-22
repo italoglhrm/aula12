@@ -23,6 +23,9 @@ let AppController = class AppController {
     getHello() {
         return this.appService.getHello();
     }
+    createAluno(aluno) {
+        return this.appService.createAluno(aluno);
+    }
     getAlunos() {
         return this.appService.getAlunos();
     }
@@ -32,19 +35,26 @@ let AppController = class AppController {
 };
 exports.AppController = AppController;
 __decorate([
-    (0, common_1.Get)('/hello'),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
 __decorate([
-    (0, common_1.Get)('/aula/alunos'),
+    (0, common_1.Post)('/alunos'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "createAluno", null);
+__decorate([
+    (0, common_1.Get)('/alunos'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Array)
 ], AppController.prototype, "getAlunos", null);
 __decorate([
-    (0, common_1.Get)('/aula/alunos/:id'),
+    (0, common_1.Get)('/alunos/:id/detalhes'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

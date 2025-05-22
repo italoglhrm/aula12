@@ -1,11 +1,12 @@
 export interface Aluno {
     id: string;
     nome: string;
-    sobrenome: string;
+    turma: string;
 }
 export declare class AppService {
     private alunos;
     getHello(): string;
+    createAluno(aluno: Aluno): void;
     getAlunos(): Aluno[];
     getAlunoById(id: string): Aluno | undefined;
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Aluno } from './app.service'
 
@@ -6,17 +6,22 @@ import { Aluno } from './app.service'
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('/hello')
+  @Get()
   getHello(): string {
     return this.appService.getHello();
   }
 
-  @Get('/aula/alunos')
+  @Post('/alunos')
+  createAluno(@Body() aluno: Aluno) {
+    return this.appService.createAluno(aluno);
+  }
+
+  @Get('/alunos')
   getAlunos(): Aluno[] {
     return this.appService.getAlunos();
   }
 
-  @Get('/aula/alunos/:id')
+  @Get('/alunos/:id/detalhes')
   getAlunoById(@Param('id') id: string): Aluno | undefined {
     return this.appService.getAlunoById(id);
   }

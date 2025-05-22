@@ -12,17 +12,34 @@ let AppService = class AppService {
     alunos = [
         {
             id: '1',
-            nome: "Lucas",
-            sobrenome: "Lopes"
+            nome: 'italo',
+            turma: '7974'
         },
         {
             id: '2',
-            nome: "Ítalo",
-            sobrenome: "Guilherme"
+            nome: 'julia',
+            turma: '7974'
+        },
+        {
+            id: '3',
+            nome: 'bruno',
+            turma: '7974'
+        },
+        {
+            id: '4',
+            nome: 'matheus',
+            turma: '7974'
         }
     ];
     getHello() {
         return 'Hello World!';
+    }
+    createAluno(aluno) {
+        const existAluno = this.alunos.find((a) => a.nome === aluno.nome);
+        if (existAluno) {
+            throw new common_1.BadRequestException('Aluno já existe.');
+        }
+        this.alunos.push(aluno);
     }
     getAlunos() {
         return this.alunos;
